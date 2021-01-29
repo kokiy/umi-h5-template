@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'antd-mobile'
+import { Icon } from '@/components'
 import styles from './index.less'
 
 export default () => {
@@ -12,6 +13,7 @@ export default () => {
       <Button type="primary" disabled>
         primary disabled
       </Button>
+      <Icon type="icleftcircle" color="#ff0" />
 
       <Button type="warning">warning</Button>
       <Button type="warning" disabled>
