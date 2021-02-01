@@ -1,6 +1,9 @@
 import { defineConfig } from 'umi'
 import px2rem from 'postcss-plugin-px2rem'
 
+const path = require('path')
+const VersionFile = require('webpack-version-file-plugin')
+
 export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
@@ -21,4 +24,13 @@ export default defineConfig({
       selectorBlackList: ['t_npx'],
     }),
   ],
+  chainWebpack(memo) {
+    memo.plugin('VersionFile').use(
+      new VersionFile({
+        packageFile: path.join(__dirname, 'package.json'),
+        template: path.join(__dirname, 'version.ejs'),
+        outputFile: path.join(__dirname, 'dist', 'version.json'),
+      }),
+    )
+  },
 })

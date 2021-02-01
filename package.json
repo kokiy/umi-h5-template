@@ -1,4 +1,6 @@
 {
+  "name":"umi-h5-template",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "umi dev",
@@ -22,6 +24,13 @@
       "prettier --parser=typescript --write"
     ]
   },
+  "author": "kokiy",
+  "homepage": "https://github.com/kokiy/umi-h5-template",
+  "license": "ISC",
+  "repository": "https://github.com/kokiy/umi-h5-template",
+  "keywords": [
+    "umi-h5-template"
+  ],
   "dependencies": {
     "@ant-design/mobile": "3.0.0-alpha.8",
     "@umijs/preset-react": "1.7.13",
@@ -33,7 +42,8 @@
     "react-dom": "^17.0.1",
     "react-h5-calendar": "^1.0.5",
     "umi": "^3.3.7",
-    "umi-hd": "^5.0.1"
+    "umi-hd": "^5.0.1",
+    "webpack-version-file-plugin": "^0.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
