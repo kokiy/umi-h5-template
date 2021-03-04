@@ -1,5 +1,5 @@
 {
-  "name":"umi-h5-template",
+  "name": "umi-h5-template",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -40,7 +40,7 @@
     "postcss-plugin-px2rem": "^0.8.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-h5-calendar": "^1.0.5",
+    "react-h5-calendar": "^1.0.6",
     "umi": "^3.3.7",
     "umi-hd": "^5.0.1",
     "webpack-version-file-plugin": "^0.4.0"

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'umi'
 import { Button } from 'antd-mobile'
 import { Icon } from '@/components'
 import styles from './index.less'
@@ -22,6 +23,7 @@ export default () => {
 
       <Button loading>loading button</Button>
       <h1 className={styles.title}>Hello World</h1>
+      <Link to="/calendar-comp-test">calendar</Link>
     </div>
   )
 }
