@@ -1,13 +1,35 @@
 import React from 'react'
 import { Link } from 'umi'
 import { Button } from 'antd-mobile'
-import { Icon } from '@/components'
+import { NavBar, Icon } from '@/components'
 import styles from './index.less'
 
 export default () => {
   const name = 4
   return (
     <div className={styles.wrap}>
+      <NavBar
+        mode="light"
+        icon={<Icon type="left" />}
+        onLeftClick={() => console.log('onLeftClick')}
+        rightContent={[
+          <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+          <Icon key="1" type="ellipsis" />,
+        ]}
+      >
+        NavBar
+      </NavBar>
+
+      <NavBar
+        mode="dark"
+        leftContent="Back"
+        rightContent={[
+          <Icon type="icleftcircle" color="#ff0" />,
+          <Icon type="icleftcircle" color="#ff0" />,
+        ]}
+      >
+        NavBar
+      </NavBar>
       <Button>{name}default</Button>
       <Button disabled>default disabled</Button>
       <Button type="primary">primary</Button>
