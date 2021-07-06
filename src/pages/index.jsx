@@ -3,11 +3,25 @@ import { Link } from 'umi'
 import { Button } from 'antd-mobile'
 import { NavBar, Icon } from '@/components'
 import styles from './index.less'
+import { Row, Col } from '@/components/grid'
 
 export default () => {
-  const name = 4
   return (
     <div className={styles.wrap}>
+      <Row gap={20}>
+        <Col span={8}>
+          <div>1</div>
+        </Col>
+        <Col span={8}>
+          <div>1</div>
+        </Col>
+        <Col span={8}>
+          <div>1</div>
+        </Col>
+        <Col span={8}>
+          <div>1</div>
+        </Col>
+      </Row>
       <NavBar
         mode="light"
         icon={<Icon type="left" />}
@@ -30,7 +44,7 @@ export default () => {
       >
         NavBar
       </NavBar>
-      <Button>{name}default</Button>
+      <Button>default</Button>
       <Button disabled>default disabled</Button>
       <Button type="primary">primary</Button>
       <Button type="primary" disabled>
