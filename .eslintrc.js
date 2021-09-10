@@ -11,6 +11,7 @@ module.exports = {
   },
   rules: {
     semi: ['error', 'never'],
+    // "@typescript-eslint/no-unused-vars": ["error"],
     '@typescript-eslint/no-unused-expressions': 0,
     'import/no-extraneous-dependencies': 0,
     'react/jsx-no-bind': 0,

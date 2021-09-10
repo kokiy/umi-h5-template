@@ -9,7 +9,7 @@ export default defineConfig({
     type: 'none',
   },
   hash: true,
-  headScripts: ['//res.wx.qq.com/open/js/jweixin-1.6.0.js'],
+  // headScripts: ['//res.wx.qq.com/open/js/jweixin-1.6.0.js'],
   define: {
     wxShareInfo: {
       title: '',
@@ -17,6 +17,7 @@ export default defineConfig({
       desc: '',
     },
   },
+
   extraPostCSSPlugins: [
     px2rem({
       rootValue: 50,

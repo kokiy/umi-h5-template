@@ -11,4 +11,12 @@ export default defineConfig({
       changeOrigin: true,
     },
   },
+  devServer: {
+    client: {
+      overlay: {
+        errors: true,
+        warnings: true,
+      },
+    },
+  },
 })

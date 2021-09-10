@@ -1,15 +1,20 @@
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useState, useMemo, useEffect } from 'react'
+import styles from './virtual-list.less'
 
 const defaultRenderItem = () => {}
+const defaultScrollToBottom = () => {}
+
 export default ({
-  SCROLL_VIEW_HEIGHT = 1000,
+  SCROLL_VIEW_HEIGHT = document.body.clientHeight,
   ITEM_HEIGHT = 100,
   PRE_LOAD_COUNT = 5,
   data,
   renderItem = defaultRenderItem,
+  scrollToBottom = defaultScrollToBottom,
 }) => {
   const VIEW_ITEM_SIZE = Math.ceil(SCROLL_VIEW_HEIGHT / ITEM_HEIGHT) // 预加载数量
   const containerRef = useRef()
+  const loadMoreRef = useRef()
   const [showRange, setShowRange] = useState({ start: 0, end: VIEW_ITEM_SIZE + PRE_LOAD_COUNT })
 
   const scrollContentHeight = useMemo(() => {
@@ -19,6 +24,22 @@ export default ({
   const currentViewList = useMemo(() => {
     return data.slice(showRange.start, showRange.end)
   }, [showRange, data])
+
+  const io = useMemo(() => {
+    return new IntersectionObserver(entries => {
+      if (entries[0].intersectionRatio > 0) scrollToBottom()
+    }, {})
+  }, [scrollToBottom])
+
+  useEffect(() => {
+    const loadMoreRefCurrent = loadMoreRef.current
+    io.observe(loadMoreRefCurrent)
+    return () => {
+      io.unobserve(loadMoreRefCurrent)
+      // 关闭观察器
+      io.disconnect()
+    }
+  }, [io])
 
   const calculateRange = () => {
     const element = containerRef.current
@@ -57,16 +78,19 @@ export default ({
           marginTop: scrollViewOffset,
         }}
       >
-        {currentViewList.map((item, index) => (
+        {currentViewList.map(item => (
           <div
             style={{
               height: ITEM_HEIGHT,
             }}
-            key={index}
+            key={item}
           >
             {renderItem(item)}
           </div>
         ))}
+      </div>
+      <div ref={loadMoreRef} className={styles['load-more']}>
+        33333
       </div>
     </div>
   )

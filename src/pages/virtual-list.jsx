@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import VirtualList from '@/components/virtual-list'
 import styles from './virtual-list.less'
 
 export default () => {
   const [sourceData, setSourceData] = useState([])
+  const [page, setPage] = useState(1)
 
-  const createListData = () => {
-    const initnalList = Array.from(Array(4000).keys())
+  const createListData = useCallback(num => {
+    const initnalList = Array.from(Array(20 * num).keys())
     setSourceData(initnalList)
-  }
+  }, [])
 
   useEffect(() => {
-    createListData()
-  }, [])
+    createListData(page)
+  }, [createListData, page])
 
   return (
     <VirtualList
@@ -23,6 +24,9 @@ export default () => {
             Current Position: {item}
           </div>
         )
+      }}
+      scrollToBottom={() => {
+        setPage(page + 1)
       }}
     />
   )

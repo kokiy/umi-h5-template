@@ -6,7 +6,7 @@ export default () => (
     <Space wrap>
       <Button
         onClick={() => {
-          alert('hello.')
+          // alert('hello.')
         }}
       >
         Default
